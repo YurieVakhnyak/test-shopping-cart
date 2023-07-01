@@ -1,7 +1,7 @@
 {
-  "name": "react-ts-shopping-cart",
+  "name": "test-shopping-cart",
   "version": "0.1.0",
-  "homepage": "https://YurieVakhnyak.github.io/react-ts-shopping-cart/",
+  "homepage": "https://YurieVakhnyak.github.io/test-shopping-cart/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
