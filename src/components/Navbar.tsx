@@ -1,7 +1,9 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 export function Navbar() {
+  const { openCart, cartQuantity } = useShoppingCart();
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
       <Container>
@@ -16,29 +18,31 @@ export function Navbar() {
             About
           </Nav.Link>
         </Nav>
-        <Button
-          variant="outline-primary"
-          className="rounded-circle"
-          style={{
-            width: "3rem",
-            height: "3rem",
-            position: "relative",
-          }}
-        >
-          <svg
-            fill="currentColor"
-            version="1.1"
-            id="Capa_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            // width="800px"
-            // height="800px"
-            viewBox="0 0 438.987 438.988"
-            xmlSpace="preserve"
+        {cartQuantity > 0 && (
+          <Button
+            onClick={openCart}
+            variant="outline-primary"
+            className="rounded-circle"
+            style={{
+              width: "3rem",
+              height: "3rem",
+              position: "relative",
+            }}
           >
-            <g>
-              <path
-                d="M226.861,322.031c-25.64,0-46.501,20.863-46.501,46.511c0,25.643,20.862,46.508,46.501,46.508
+            <svg
+              fill="currentColor"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              // width="800px"
+              // height="800px"
+              viewBox="0 0 438.987 438.988"
+              xmlSpace="preserve"
+            >
+              <g>
+                <path
+                  d="M226.861,322.031c-25.64,0-46.501,20.863-46.501,46.511c0,25.643,20.862,46.508,46.501,46.508
 		c25.641,0,46.517-20.865,46.517-46.508C273.378,342.894,252.511,322.031,226.861,322.031z M226.861,392.637
 		c-13.286,0-24.088-10.809-24.088-24.096c0-13.285,10.802-24.098,24.088-24.098c13.282,0,24.101,10.812,24.101,24.098
 		C250.962,381.829,240.157,392.637,226.861,392.637z M422.17,23.938h-55.848L317.6,136.004h-24.43l3.773-10.651l-17.719-6.282
@@ -57,24 +61,25 @@ export function Navbar() {
 		c25.643,0,46.515-20.865,46.515-46.508C149.777,342.894,128.905,322.031,103.262,322.031z M103.262,392.637
 		c-13.283,0-24.088-10.809-24.088-24.096c0-13.285,10.805-24.098,24.088-24.098c13.286,0,24.103,10.812,24.103,24.098
 		C127.365,381.829,116.548,392.637,103.262,392.637z"
-              />
-            </g>
-          </svg>
-          <div
-            className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
-            style={{
-              color: "white",
-              width: "1.5rem",
-              height: "1.5rem",
-              position: "absolute",
-              bottom: 0,
-              right: 0,
-              transform: "translate(25%, 25%)",
-            }}
-          >
-            3
-          </div>
-        </Button>
+                />
+              </g>
+            </svg>
+            <div
+              className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+              style={{
+                color: "white",
+                width: "1.5rem",
+                height: "1.5rem",
+                position: "absolute",
+                bottom: 0,
+                right: 0,
+                transform: "translate(25%, 25%)",
+              }}
+            >
+              {cartQuantity}
+            </div>
+          </Button>
+        )}
       </Container>
     </NavbarBs>
   );
